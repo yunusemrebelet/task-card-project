@@ -1,0 +1,38 @@
+<!-- Main container for the card, adding necessary margin and overflow hidden -->
+<div #card class="card-container overflow-hidden rounded-lg mt-20">
+    <!-- Sponsor card container, split into two sections: left for content, right for sponsor cards -->
+    <div class="sponsor-card flex rounded-lg border relative justify-between h-full flex-row">
+        <!-- Left section: Contains the text and the link -->
+        <div class="w-1/2 sponsord-card-left-box z-30">
+            <div class="flex flex-col justify-between p-16 h-full">
+                <p class="font-medium leading-8 mb-6 mt-0">
+                    <em>Github Sponsors</em> lets you support your favorite open source maintainers and projects.
+                </p>
+                <div>
+                    <a class="font-bold pt-1 pb-1" href="#">Invest with Github Sponsors <i class="arrow-icon"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Right section: Contains the grid of sponsor cards -->
+        <div class="w-1/2 overflow-hidden z-20">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 sponsor-cards-list">
+                <!-- Single sponsor card, repeated multiple times -->
+                <div class="w-full single-card" *ngFor="let card of cards">
+                    <a target="_blank" [href]="card.profileLink"
+                        class="rounded p-4 border flex no-underline flex-col items-center m-2 custom-shadow">
+                        <img width="96" height="96" class="block" [src]="card.imageUrl" alt="">
+                        <div class="my-2">{{ card.name }}</div>
+                        <button>
+                            <span class="button-content">
+                                <span class="button-visual"><i class="heart-icon"></i></span>
+                                <span class="button-label">Sponsor</span>
+                            </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Shining effect element -->
+        <div #shine class="shine z-10"></div>
+    </div>
+</div>
